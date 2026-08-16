@@ -1,0 +1,8 @@
+/target
+*.pdb
+.DS_Store
+/.aviutl2-cli
+/dist
+/received_*
+/vendor/ndi/*.dll
+/vendor/ndi/*.txt

@@ -1,0 +1,28 @@
+[package]
+name = "aviutl2-ndi-output"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97"
+license = "MIT"
+publish = false
+authors = ["MikanseiLaboratory"]
+description = "AviUtl2 generic plugin that live-sends the current scene over NDI®"
+repository = "https://github.com/MikanseiLaboratory/aviutl2-ndi-output"
+readme = "README.md"
+
+[lib]
+name = "aviutl2_ndi_live_output"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+aviutl2 = { version = "=0.43.0", default-features = false, features = ["generic", "serde", "wrap_log"] }
+aviutl2-eframe = "=0.43.0"
+grafton-ndi = { version = "=1.0.0", default-features = false }
+serde = { version = "1", features = ["derive"] }
+tracing = "0.1"
+windows-sys = { version = "0.61", features = ["Win32_Foundation", "Win32_System_LibraryLoader"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
