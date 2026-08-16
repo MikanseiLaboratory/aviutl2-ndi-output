@@ -73,7 +73,7 @@ impl eframe::App for UiApp {
                     scene.fps_label(),
                     scene.frame_count
                 ));
-                ui.label(format!("メモリ概算: {}", format_bytes(estimate)));
+                ui.label(format!("使用メモリの目安: {}", format_bytes(estimate)));
 
                 ui.separator();
                 ui.horizontal(|ui| {
@@ -109,9 +109,9 @@ impl eframe::App for UiApp {
                 ui.label(match transport {
                     Transport::Idle => "状態: 待機".to_string(),
                     Transport::Baking => format!("状態: 描画中 {baked_n} / {baked_total}"),
-                    Transport::HoldFirst => "状態: 先頭フレーム固定".to_string(),
+                    Transport::HoldFirst => "状態: 先頭を送出中".to_string(),
                     Transport::Playing => format!("状態: 再生中 フレーム {play_index}"),
-                    Transport::HoldLast => "状態: 最終フレーム固定".to_string(),
+                    Transport::HoldLast => "状態: 最後のフレームを送出中".to_string(),
                 });
 
                 ui.separator();
@@ -128,7 +128,7 @@ impl eframe::App for UiApp {
                     ui.checkbox(&mut self.draft.send_audio, "音声を送信");
                     ui.checkbox(&mut self.draft.send_alpha, "アルファを送信");
                     ui.horizontal(|ui| {
-                        ui.label("送信キュー深度");
+                        ui.label("送信バッファ");
                         ui.add(Slider::new(
                             &mut self.draft.send_queue_depth,
                             MIN_QUEUE_DEPTH..=MAX_QUEUE_DEPTH,
@@ -138,18 +138,18 @@ impl eframe::App for UiApp {
 
                 ui.separator();
                 ui.label(format!(
-                    "接続数: {}    Tally PGM: {}    PVW: {}",
+                    "接続数: {}    番組: {}    プレビュー出力: {}",
                     status.connections,
                     bool_jp(status.tally_program),
                     bool_jp(status.tally_preview)
                 ));
                 ui.label(format!(
-                    "映像購読: {}    音声購読: {}",
+                    "映像を受信中: {}    音声を受信中: {}",
                     bool_jp(status.video_subscribed),
                     bool_jp(status.audio_subscribed)
                 ));
                 ui.label(format!(
-                    "送信 fps: {:.1}    キュー: 映像 {} / 音声 {}",
+                    "送信 fps: {:.1}    バッファ: 映像 {} / 音声 {}",
                     status.send_fps, status.video_queued, status.queue_depth
                 ));
                 ui.label(format!(
@@ -174,7 +174,7 @@ impl eframe::App for UiApp {
                 self.show_preview(ui, play_index);
 
                 ui.separator();
-                ui.label("About");
+                ui.label("このプラグインについて");
                 ui.label("ライセンス");
                 ui.label(format!("開発者: {PLUGIN_AUTHOR}"));
                 ui.label(format!("v{}", env!("CARGO_PKG_VERSION")));

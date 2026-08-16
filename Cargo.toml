@@ -1,5 +1,5 @@
 [package]
-name = "aviutl2-ndi-output"
+name = "aviutl2-network-video-output"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.97"
@@ -7,7 +7,7 @@ license = "MIT"
 publish = false
 authors = ["MikanseiLaboratory"]
 description = "AviUtl2 generic plugin that live-sends the current scene over NDI®"
-repository = "https://github.com/MikanseiLaboratory/aviutl2-ndi-output"
+repository = "https://github.com/MikanseiLaboratory/aviutl2-network-video-output"
 readme = "README.md"
 
 [lib]

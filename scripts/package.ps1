@@ -33,12 +33,12 @@ Copy-Item $ndiRuntime.Dll (Join-Path $pluginData "Processing.NDI.Lib.x64.dll")
 Copy-Item $ndiRuntime.Licenses (Join-Path $pluginData "Processing.NDI.Lib.Licenses.txt")
 
 @"
-id=aviutl2-ndi-output
+id=aviutl2-network-video-output
 name=AviUtl2 Network Video Output
 information=AviUtl2 Network Video Output v$Version
 "@ | Set-Content -Encoding UTF8 (Join-Path $stage "package.ini")
 
-$zipName = "aviutl2-ndi-output-v$Version.au2pkg.zip"
+$zipName = "aviutl2-network-video-output-v$Version.au2pkg.zip"
 $zipPath = Join-Path $dist $zipName
 if (Test-Path $zipPath) {
     Remove-Item -Force $zipPath

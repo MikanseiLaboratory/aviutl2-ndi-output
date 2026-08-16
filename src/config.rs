@@ -9,7 +9,8 @@ pub const MAX_QUEUE_DEPTH: usize = 16;
 pub const MAX_SOURCE_NAME_LEN: usize = 63;
 pub const MAX_GROUPS_LEN: usize = 255;
 pub const PREVIEW_MAX_WIDTH: u32 = 320;
-pub const SCENE_HINT: &str = "AviUtl2 側で出したいシーンを開いてから描画開始してください。ベイク中はそのシーンを編集しないでください。";
+pub const SCENE_HINT: &str =
+    "出したいシーンを開いてから描画開始してください。描画中はそのシーンを編集しないでください。";
 pub const NDI_SITE: &str = "https://ndi.video/";
 pub const NDI_TRADEMARK: &str = "NDI® is a registered trademark of Vizrt NDI AB.";
 pub const LICENSE_NOTICE: &str =

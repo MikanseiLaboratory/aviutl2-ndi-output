@@ -1,5 +1,5 @@
 [project]
-id = "aviutl2-ndi-output"
+id = "aviutl2-network-video-output"
 name = "AviUtl2 Network Video Output"
 version = "0.1.0"
 
@@ -44,7 +44,7 @@ aviutl2_version = "2.1.4"
 profile = "debug"
 
 [release]
-package_id = "aviutl2-ndi-output"
+package_id = "aviutl2-network-video-output"
 package_name = "AviUtl2 Network Video Output"
 package_information = "AviUtl2 Network Video Output v{version}"
 zip_name = "{id}-v{version}"
@@ -52,7 +52,7 @@ profile = "release"
 include = ["plugin", "english", "japanese", "license", "notices", "ndi_terms", "readme"]
 
 [catalog]
-id = "MikanseiLaboratory.aviutl2-ndi-output"
-description_path = "catalog/md/MikanseiLaboratory.aviutl2-ndi-output.md"
+id = "MikanseiLaboratory.NDIPlugin"
+description_path = "catalog/md/MikanseiLaboratory.NDIPlugin.md"
 license_path = "LICENSE"
-download_repo = { owner = "MikanseiLaboratory", repo = "aviutl2-ndi-output" }
+download_repo = { owner = "MikanseiLaboratory", repo = "aviutl2-network-video-output" }

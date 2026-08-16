@@ -40,7 +40,7 @@ impl aviutl2::generic::GenericPlugin for NdiLivePlugin {
         aviutl2::generic::GenericPluginTable {
             name: PLUGIN_DISPLAY_NAME.to_string(),
             information: format!(
-                "シーンを NDI® でキュー再生送信 / {PLUGIN_AUTHOR} / v{version} / https://github.com/MikanseiLaboratory/aviutl2-ndi-output",
+                "今開いているシーンを NDI® で送出 / {PLUGIN_AUTHOR} / v{version} / https://github.com/MikanseiLaboratory/aviutl2-network-video-output",
                 version = env!("CARGO_PKG_VERSION")
             ),
         }

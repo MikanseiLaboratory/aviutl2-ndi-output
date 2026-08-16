@@ -214,7 +214,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "aviutl2-ndi-output"
+name = "aviutl2-network-video-output"
 version = "0.1.0"
 dependencies = [
  "aviutl2",
