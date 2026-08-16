@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+env:
+  NDI_SDK_URL: ${{ secrets.NDI_SDK_URL || 'https://downloads.ndi.tv/SDK/NDI_SDK/NDI%206%20SDK.exe' }}
+  LLVM_VERSION: "20.1.8"
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: "1.97.1"
+          targets: x86_64-pc-windows-msvc
+      - name: Setup NDI SDK and LLVM
+        shell: pwsh
+        run: ./scripts/ci-setup-ndi.ps1
+      - name: Release build
+        run: cargo build --release --locked --target x86_64-pc-windows-msvc
+      - name: Package
+        shell: pwsh
+        run: ./scripts/package.ps1
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.au2pkg.zip
+          generate_release_notes: true
